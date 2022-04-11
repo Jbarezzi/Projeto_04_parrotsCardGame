@@ -70,6 +70,24 @@ h1 {
     transform: rotateY(0deg);
 }
 
+.timer {
+    background-color: #A7E9AF;
+    box-shadow: 1px 1px 1px rgba(0,0,0,.3);
+    border-radius: 0 0 0 15px;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    height: 50px;
+    top: 0;
+    right: 0;
+    position: fixed;
+    font-size: 25px;
+    font-weight: 300;
+    font-family: "Roboto", sans-serif;
+}
+
 @media (max-width: 414px) {
     h1 {
         font-size: 36px;

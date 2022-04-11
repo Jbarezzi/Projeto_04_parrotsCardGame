@@ -1,4 +1,10 @@
-let numberOfCards, firstClick, firstCard, secondCard, plays = 0;
+let numberOfCards, 
+    firstClick, 
+    firstCard, 
+    secondCard,
+    idInterval,
+    seconds = 0, 
+    plays = 0;
 
 function gameStart() {
     alert("Esse é o jogo da memórias dos Papagaios, escolha entre 4 e 14 cartas, lembrando de sempre escolher números pares e digitar com caracteres numéricos! 🦜");
@@ -11,6 +17,7 @@ function gameStart() {
     }
 
     dealCards(numberOfCards);
+    timer();
 }
 
 function dealCards(numberOfCards) {
@@ -88,8 +95,46 @@ function endGame() {
     const cards = document.querySelectorAll("div.flipped");
 
     if (cards.length === 2*numberOfCards) {
-        alert("Você ganhou em " + plays + " jogadas!");
+        alert("Você ganhou em " + plays + " jogadas e " + seconds + " segundos!");
+        clearInterval(idInterval);
+        restartGame();
     }
+}
+
+function restartGame() {
+    let restart = prompt("Você deseja reiniciar o jogo? (sim ou não)");
+    if (restart === "sim") {
+        cleanScreen();
+        gameStart();
+    } else if (restart === "não") {
+        alert("Obigado por Jogar!")
+    } else {
+        restartGame();
+    }
+
+}
+
+function cleanScreen() {
+    const list = document.querySelector("ul");
+    list.innerHTML = "";
+    seconds = 0;
+}
+
+function timer() {
+    idInterval = setInterval(increment, 1000);
+}
+
+function increment() {
+    seconds++;
+    document.querySelector(".timer").innerHTML = formatTime(seconds);
+}
+
+function formatTime(seconds) {
+    return [
+        parseInt(seconds / 60 % 60),
+        parseInt(seconds % 60)
+    ]
+        .join(":");
 }
 
 gameStart();
