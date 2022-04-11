@@ -63,18 +63,18 @@ function selectCard(element) {
         flip(element);
         firstClick = click;
         firstCard = element;
-        plays++;
+        playsCounter();
     } else if (click === firstClick) {
         flip(element);
         firstClick = undefined;
-        plays++;
+        playsCounter();
         endGame();
     } else if (click !== firstClick) {
         flip(element);
         secondCard = element;
         setTimeout(unflip, 1000);
         firstClick = undefined;
-        plays++;
+        playsCounter();
     }
 
 }
@@ -118,6 +118,7 @@ function cleanScreen() {
     const list = document.querySelector("ul");
     list.innerHTML = "";
     seconds = 0;
+    plays = 0;
 }
 
 function timer() {
@@ -130,11 +131,12 @@ function increment() {
 }
 
 function formatTime(seconds) {
-    return [
-        parseInt(seconds / 60 % 60),
-        parseInt(seconds % 60)
-    ]
-        .join(":");
+    return [parseInt(seconds / 60 % 60),parseInt(seconds % 60)].join(":");
+}
+
+function playsCounter() {
+    plays++;
+    document.querySelector(".counter").innerHTML = `Jogadas: ${plays}`;
 }
 
 gameStart();
