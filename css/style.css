@@ -6,6 +6,15 @@ body {
     background-color: #EEF9BF;
 }
 
+ul {
+    height: 326px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    row-gap: 34px;
+    margin: 0 auto;
+}
+
 img {
     width: 100px;
     height: 100px;
@@ -26,28 +35,48 @@ h1 {
     margin-bottom: 55px;
 }
 
-.memory-cards {
-    width: 1012px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.container {
-    height: 326px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
 .card {
-    background-color: #A7E9AF;
-    border: 1px solid #99CEA8;
-    border-radius: 5px;
     width: 117px;
     height: 146px;
+    position: relative;
+}
+
+.face {
+    width: 100%;
+    height: 100%;
+    background-color: #A7E9AF;
+    border-radius: 5px;
+    border: 1px solid #99CEA8;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+    position: absolute;
+    backface-visibility: hidden;
+    transition: all .5s;
+    transform-style: preserve-3d;
+    box-shadow: 1px 1px 1px rgba(0,0,0,.3);
+}
+
+.back-face {
+    transform: rotateY(180deg);
+  }
+
+.front-face.flipped {
+    transform: rotateY(-180deg);
+}
+
+.back-face.flipped {
+    transform: rotateY(0deg);
+}
+
+@media (max-width: 414px) {
+    h1 {
+        font-size: 36px;
+    }
+
+    ul {
+        flex-direction: column;
+    }
+
+    
 }
