@@ -43,7 +43,11 @@ function randomizer() {
 }
 
 function ulSizeAdjust(list, numberOfCards) {
-    list.style.width = `${132 * (numberOfCards/2)}px`;
+    if (window.screen.width > 414) {
+        list.style.width = `${132 * (numberOfCards/2)}px`;
+    } else {
+        list.style.width = "117px"
+    }
 }
 
 function selectCard(element) {
@@ -82,6 +86,7 @@ function unflip() {
 
 function endGame() {
     const cards = document.querySelectorAll("div.flipped");
+
     if (cards.length === 2*numberOfCards) {
         alert("Você ganhou em " + plays + " jogadas!");
     }

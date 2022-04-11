@@ -31,6 +31,7 @@ h1 {
     width: 100%;
     display: flex;
     justify-content: center;
+    align-items: center;
     margin-top: 45px;
     margin-bottom: 55px;
 }
@@ -72,10 +73,14 @@ h1 {
 @media (max-width: 414px) {
     h1 {
         font-size: 36px;
+        text-align: center;
     }
 
     ul {
         flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
     }
 
     
